@@ -1,0 +1,5 @@
+﻿  YearInfo.cpp
+C:\Users\User\source\repos\YearInfo\YearInfo\YearInfo.cpp(10,13): warning C4326: возвращаемый тип "main" должен быть "int", а не "void"
+C:\Users\User\source\repos\YearInfo\YearInfo\YearInfo.cpp(32,25): warning C4551: в вызове функции отсутствует список аргументов
+C:\Users\User\source\repos\YearInfo\YearInfo\YearInfo.cpp(54,10): warning C4101: leapYear: неиспользованная локальная переменная
+  YearInfo.vcxproj -> C:\Users\User\source\repos\YearInfo\Debug\YearInfo.exe
