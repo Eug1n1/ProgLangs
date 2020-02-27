@@ -1,0 +1,4 @@
+﻿  LP_Lab03.cpp
+C:\Users\User\source\repos\PL\LP_Lab03\LP_Lab03\LP_Lab03.cpp(31,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\User\source\repos\PL\LP_Lab03\LP_Lab03\LP_Lab03.cpp(50,23): warning C4018: <: несоответствие типов со знаком и без знака
+  LP_Lab03.vcxproj -> C:\Users\User\source\repos\PL\LP_Lab03\Debug\LP_Lab03.exe
