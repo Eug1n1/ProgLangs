@@ -1,0 +1,5 @@
+cl /c /EHsc /Yc"stdafx.h" LP_Lab02.cpp
+cl /c /EHsc /Yu"stdafx.h" Func_sum.cpp
+cl /c /EHsc /Yu"stdafx.h" Func_sub.cpp
+cl /c /EHsc /Yu"stdafx.h" Func_mul.cpp
+link LP_Lab02.obj Func_sum.obj Func_sub.obj Func_mul.obj
