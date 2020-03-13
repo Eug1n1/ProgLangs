@@ -1,0 +1,4 @@
+﻿  lab_4.cpp
+D:\cpp_projs\PL\lab_4\lab_4\lab_4.cpp(14,17): warning C4309: инициализация: усечение константного значения
+D:\cpp_projs\PL\lab_4\lab_4\lab_4.cpp(15,19): warning C4309: инициализация: усечение константного значения
+  lab_4.vcxproj -> D:\cpp_projs\PL\lab_4\Debug\lab_4.exe
