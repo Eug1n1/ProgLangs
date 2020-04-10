@@ -26,7 +26,7 @@ namespace Dictionary
         Entry* dictionary;
     };
 
-    Instance Create(char name[DICTNAMEMAXSIZE], int size);
+    Instance Create(const char name[DICTNAMEMAXSIZE], int size);
 
     void AddEntry(Instance& inst, Entry ed);
 
@@ -38,5 +38,5 @@ namespace Dictionary
 
     void Print(Instance d);
 
-    void Delete(Instance& d);
+    void Delete(Instance* d);
 }
