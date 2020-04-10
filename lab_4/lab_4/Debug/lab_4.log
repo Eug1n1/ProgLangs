@@ -1,6 +1,6 @@
 ﻿  lab_4.cpp
-D:\cpp_projs\PL\lab_4\lab_4\lab_4.cpp(18,17): warning C4309: инициализация: усечение константного значения
-D:\cpp_projs\PL\lab_4\lab_4\lab_4.cpp(19,19): warning C4309: инициализация: усечение константного значения
-D:\cpp_projs\PL\lab_4\lab_4\lab_4.cpp(61): warning C4723: возможное деление на 0
-D:\cpp_projs\PL\lab_4\lab_4\lab_4.cpp(62): warning C4723: возможное деление на 0
-  lab_4.vcxproj -> D:\cpp_projs\PL\lab_4\Debug\lab_4.exe
+C:\Projs\ProgLangs\lab_4\lab_4\lab_4.cpp(26,17): warning C4309: инициализация: усечение константного значения
+C:\Projs\ProgLangs\lab_4\lab_4\lab_4.cpp(27,19): warning C4309: инициализация: усечение константного значения
+C:\Projs\ProgLangs\lab_4\lab_4\lab_4.cpp(72): warning C4723: возможное деление на 0
+C:\Projs\ProgLangs\lab_4\lab_4\lab_4.cpp(73): warning C4723: возможное деление на 0
+  lab_4.vcxproj -> C:\Projs\ProgLangs\lab_4\Debug\lab_4.exe

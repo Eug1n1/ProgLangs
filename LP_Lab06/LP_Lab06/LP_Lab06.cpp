@@ -18,55 +18,56 @@ struct Date {
     day dd;
     month mm;
     year yyyy;
-
-    bool operator ==(const Date date) {
-        return dd == date.dd && mm == date.mm && yyyy == date.yyyy;
-    }
-
-    bool operator <(const Date date) {
-        if (yyyy < date.yyyy)
-            return 1;
-        else if (yyyy > date.yyyy)
-            return 0;
-        else {
-            if (mm < date.mm)
-                return 1;
-            else if (mm > date.mm)
-                return 0;
-            else {
-                if (dd < date.dd)
-                    return 1;
-                else if (dd > date.dd)
-                    return 0;
-                else
-                    return 0;
-            }
-        }
-    }
-
-
-
-    bool operator >(const Date date) {
-        if (yyyy > date.yyyy)
-            return 1;
-        else if (yyyy < date.yyyy)
-            return 0;
-        else {
-            if (mm > date.mm)
-                return 1;
-            else if (mm < date.mm)
-                return 0;
-            else {
-                if (dd > date.dd)
-                    return 1;
-                else if (dd < date.dd)
-                    return 0;
-                else
-                    return 0;
-            }
-        }
-    }
 };
+
+
+bool operator ==(const Date date1, const Date date) {
+    return date1.dd == date.dd && date1.mm == date.mm && date1.yyyy == date.yyyy;
+}
+
+bool operator <(const Date date1, const Date date) {
+    if (date1.yyyy < date.yyyy)
+        return 1;
+    else if (date1.yyyy > date.yyyy)
+        return 0;
+    else {
+        if (date1.mm < date.mm)
+            return 1;
+        else if (date1.mm > date.mm)
+            return 0;
+        else {
+            if (date1.dd < date.dd)
+                return 1;
+            else if (date1.dd > date.dd)
+                return 0;
+            else
+                return 0;
+        }
+    }
+}
+
+
+
+bool operator >(const Date date1, const Date date) {
+    if (date1.yyyy > date.yyyy)
+        return 1;
+    else if (date1.yyyy < date.yyyy)
+        return 0;
+    else {
+        if (date1.mm > date.mm)
+            return 1;
+        else if (date1.mm < date.mm)
+            return 0;
+        else {
+            if (date1.dd > date.dd)
+                return 1;
+            else if (date1.dd < date.dd)
+                return 0;
+            else
+                return 0;
+        }
+    }
+}
 
 struct Birthday {
     short dd;

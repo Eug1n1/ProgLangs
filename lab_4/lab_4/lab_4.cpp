@@ -64,7 +64,7 @@ int main()
 
     //float - 32bit
     float FloatNumberp = 16.0;// 0001 0000 => 0001.0000 e=4  =>  127 + 4 = 131  0.1000 0011.00000000000000000000000 = 0x41800000
-    float FloatNumbern = -16.0;// 1111 0000 => 1.1110000 e=7 => 127 + 7 = 134  1.1000 0110.11100000000000000000000 = 0xс37
+    float FloatNumbern = -16.0;// 1111 0000 => 1.1110000 e=7 => 127 + 7 = 134  1.1000 0110.11100000000000000000000 =  0xс1800000
 
     //17
     float Number1 = 20.225f;
@@ -74,14 +74,14 @@ int main()
     float value3 = sqrt(-7.0f);
 
     //18
-    char ch = 'A';
+    char yh = 'F';
     wchar_t wc = L'Т';
     short sh = 4;
     int i = 5;
     float fl = 1.5f;
     double doub = 8.5;
 
-    char* pc = &ch;
+    char* pc = &yh;
     wchar_t* pwc = &wc;
     short* ps = &sh;
     float* pf = &fl;
@@ -105,7 +105,7 @@ int main()
 
 
     //20
-    char& chlin = ch;
+    char& chlin = yh;
     wchar_t& wclin = wc;
 
     short& shlin = sh;

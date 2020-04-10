@@ -1,0 +1,6 @@
+﻿  Dictionary.cpp
+  PL_Lab_07.cpp
+C:\Projs\ProgLangs\PL_Lab_07\PL_Lab_07\PL_Lab_07.cpp(10,62): error C2664: "Dictionary::Instance Dictionary::Create(char [],int)": невозможно преобразовать аргумент 1 из "const char [14]" в "char []"
+C:\Projs\ProgLangs\PL_Lab_07\PL_Lab_07\PL_Lab_07.cpp(10,31): message : При преобразовании из строкового литерала теряется квалификатор (см. /Zc:strictStrings)
+C:\Projs\ProgLangs\PL_Lab_07\PL_Lab_07\Dictionary.h(29,14): message : см. объявление "Dictionary::Create"
+  Создание кода...

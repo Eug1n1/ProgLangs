@@ -26,5 +26,17 @@ namespace Dictionary
         Entry* dictionary;
     };
 
+    Instance Create(char name[DICTNAMEMAXSIZE], int size);
 
+    void AddEntry(Instance& inst, Entry ed);
+
+    void DelEntry(Instance& inst, int id);
+
+    void UpdEntry(Instance& inst, int id, Entry new_ed);
+
+    Entry GetEntry(Instance inst, int id);
+
+    void Print(Instance d);
+
+    void Delete(Instance& d);
 }
