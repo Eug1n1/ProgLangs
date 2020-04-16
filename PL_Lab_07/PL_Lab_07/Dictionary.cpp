@@ -15,6 +15,8 @@ Instance Dictionary::Create(const char name[DICTNAMEMAXSIZE], int size)
 	dict.size = 0;
 	dict.maxsize = size;
 
+	dict.dictionary = new Entry[size];
+
 	return dict;
 }
 
@@ -40,7 +42,7 @@ void Dictionary::DelEntry(Instance& inst, int id) {
 	if (!elNum)
 		throw THROW05;
 
-	for (int i = elNum; i < inst.size; i++)
+	for (int i = elNum; i < inst.maxsize; i++)
 		inst.dictionary[i] = inst.dictionary[i + 1];
 
 	inst.size--;
@@ -51,7 +53,7 @@ void Dictionary::UpdEntry(Instance& inst, int id, Entry new_ed) {
 	int elNum = 0;
 
 	for (int i = 0; i < inst.size; i++)
-		if (inst.dictionary[i].id = id)
+		if (inst.dictionary[i].id == id)
 			elNum = i;
 
 	if (!elNum)
@@ -68,21 +70,25 @@ Entry Dictionary::GetEntry(Instance inst, int id) {
 	int elNum = 0;
 
 	for (int i = 0; i < inst.size; i++)
-		if (inst.dictionary[i].id = id)
+		if (inst.dictionary[i].id == id) {	
 			elNum = i;
-
-	if (!elNum)
-		throw THROW07;
+		}
+			
+			
+	if (elNum == 0)
+		throw THROW05;
 	
-	return inst.dictionary[elNum];
+ 	return inst.dictionary[elNum];
 }
 
 void Dictionary::Print(Instance inst) {
-	printf("--------- %s ---------", inst.name);
+	printf("--------- %s ---------\n", inst.name);
 	for (int i = 0; i < inst.size; i++)
 		printf("%d %s\n", inst.dictionary[i].id, inst.dictionary[i].name);
 }
 
-void Dictionary::Delete(Instance* inst) {
-	delete inst;
+void Dictionary::Delete(Instance& d)
+{
+	d.maxsize = 0;
+	d.size = 0;
 }

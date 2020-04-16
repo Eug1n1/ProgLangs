@@ -38,5 +38,5 @@ namespace Dictionary
 
     void Print(Instance d);
 
-    void Delete(Instance* d);
+    void Delete(Instance& d);
 }
