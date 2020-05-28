@@ -1,0 +1,8 @@
+﻿  Error.cpp
+C:\Users\User\source\repos\LPLab10\LPLab10\Error.cpp(19,3): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "ERROR_ENTRY_NODEF"
+C:\Users\User\source\repos\LPLab10\LPLab10\Error.cpp(20,3): warning C4002: слишком много аргументов для вызова макроса, подобного функции, "ERROR_ENTRY_NODEF"
+  LPLab10.cpp
+  Parm.cpp
+  Создание кода...
+C:\Users\User\source\repos\LPLab10\LPLab10\Error.cpp(35): error C4716: Error::getErrorIn: должна возвращать значение
+C:\Users\User\source\repos\LPLab10\LPLab10\Error.cpp(31): error C4716: Error::getError: должна возвращать значение
