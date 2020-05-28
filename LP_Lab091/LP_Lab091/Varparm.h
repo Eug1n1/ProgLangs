@@ -13,6 +13,6 @@ namespace Varparm {
 
 	double dvarparm(double n, ...);
 
-	int defaultparm(int a, int b, int c, int d = 5, int e = 7);
+	float defaultparm(float a, float b, float c, float d, float e, float f = 5, float g = 7);
 
 };
