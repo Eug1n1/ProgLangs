@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "../LP_Lab08L/Dictionary.h"
 
-//#pragma comment(lib, "D:\\cpp_projs\\PL\\LP_Lab08S\\Debug\\LP_Lab08L.lib ")
+//#pragma comment(lib, "C:\\Projs\\ProgLangs\\LP_Lab08S\\Debug\\LP_Lab08L.lib ")
 
 using std::cout;
 using std::endl;

@@ -94,7 +94,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>D:\\cpp_projs\\PL\\LP_Lab08S\\Debug\\LP_Lab08L.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>C:\\Projs\\ProgLangs\\LP_Lab08S\\Debug\\LP_Lab08L.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

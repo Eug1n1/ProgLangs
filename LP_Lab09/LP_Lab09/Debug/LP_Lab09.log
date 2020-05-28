@@ -1,2 +1,6 @@
-﻿  LP_Lab09.cpp
-  LP_Lab09.vcxproj -> D:\cpp_projs\PL\LP_Lab09\Debug\LP_Lab09.exe
+﻿  Call.cpp
+  LP_Lab09.cpp
+  Varparm.cpp
+C:\Projs\ProgLangs\LP_Lab09\LP_Lab09\Varparm.cpp(35,17): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  Создание кода...
+  LP_Lab09.vcxproj -> C:\Projs\ProgLangs\LP_Lab09\Debug\LP_Lab09.exe
