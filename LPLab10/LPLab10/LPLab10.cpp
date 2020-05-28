@@ -4,10 +4,11 @@
 //#include "In.h"
 #include <iostream>
 #include <tchar.h>
+#include <cwchar>
 
 using std::endl;
 
-#define testParm 0
+#define testParm 1
 #define testError 0
 #define testIn 0
 #define testLog 0
@@ -44,8 +45,8 @@ int _tmain(int argc, _TCHAR* argv[])
     std::cout << "---- тест Parm::getparm ----" << endl << endl;
     try
     {
-        Parm::PARM parm = Parm::getparm(argc, argv);
-        std::wcout << "-in:" << parm.in << ", -out:" << parm.out << ", -log:" << parm.log << endl << endl;
+        Parm::PARM parm = Parm::getParm(argc, argv);
+        std::wcout << L"-out:" << parm.out << L", -log:" << parm.log << ", -in:" << parm.in << endl << endl;
     }
     catch (Error::ERROR e)
     {
@@ -93,8 +94,6 @@ int _tmain(int argc, _TCHAR* argv[])
     };
 
 #endif
-
-    Parm::getParm(argc, argv);
 
     return 0;
 }

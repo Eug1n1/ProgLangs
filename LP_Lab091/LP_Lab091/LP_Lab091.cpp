@@ -44,4 +44,7 @@ int main()
 
     std::cout << "CFST" << std::endl;
     std::cout << Call::cfst(1, 2, 3) << std::endl << std::endl;
+
+    float v = Varparm::defaultparm(1, 2, 3, 4, 5, 6, 7);
+    float n = Varparm::defaultparm(1, 2, 3, 4, 5);
 }

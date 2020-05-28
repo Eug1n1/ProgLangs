@@ -1,5 +1,7 @@
 ﻿  Parm.cpp
-C:\Projs\ProgLangs\LPLab10\LPLab10\Parm.cpp(9,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Projs\ProgLangs\LPLab10\LPLab10\Parm.cpp(16,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Projs\ProgLangs\LPLab10\LPLab10\Parm.cpp(21,22): warning C4018: <: несоответствие типов со знаком и без знака
-  LPLab10.vcxproj -> C:\Projs\ProgLangs\LPLab10\Debug\LPLab10.exe
+C:\Projs\LPLab10\LPLab10\Parm.cpp(10,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projs\LPLab10\LPLab10\Parm.cpp(20,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projs\LPLab10\LPLab10\Parm.cpp(25,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projs\LPLab10\LPLab10\Parm.cpp(36,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Projs\LPLab10\LPLab10\Parm.cpp(41,22): warning C4018: <: несоответствие типов со знаком и без знака
+  LPLab10.vcxproj -> C:\Projs\LPLab10\Debug\LPLab10.exe

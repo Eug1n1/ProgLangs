@@ -6,6 +6,7 @@ int Varparm::ivarparm(int n, ...){
 	va_list f;
 
 	va_start(f, n);
+	
 	for (int i = 0; i < n; i++) {
 		result *= va_arg(f, int);
 	}
@@ -19,6 +20,7 @@ short Varparm::svarparm(short n, ...) {
 	va_list f;
 
 	va_start(f, n);
+	
 	for (int i = 0; i < n; i++) {
 		result *= va_arg(f, short);
 	}

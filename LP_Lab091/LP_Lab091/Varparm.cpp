@@ -53,7 +53,7 @@ double Varparm::dvarparm(double n, ...) {
 	return result;
 }
 
-int Varparm::defaultparm(int a, int b, int c, int d = 5, int e = 7)
+float Varparm::defaultparm(float a, float b, float c, float d, float e, float f, float g)
 {
-	return (a + b + c + d + e) / 5;
+	return ((a + b + c + d + e + f + g) / 7);
 }

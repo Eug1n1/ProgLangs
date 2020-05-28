@@ -1,4 +1,5 @@
 #include "Parm.h"
+#include <wchar.h>
 
 Parm::PARM Parm::getParm(int argc, _TCHAR* argv[])
 {
@@ -10,6 +11,9 @@ Parm::PARM Parm::getParm(int argc, _TCHAR* argv[])
 				parm.in[k++] = argv[i][j];
 			}
 		}
+	}
+
+	for (int i = 1; i < argc; i++) {
 
 		k = 0;
 		if (wcsstr(argv[i], PARM_OUT)) {
@@ -21,11 +25,25 @@ Parm::PARM Parm::getParm(int argc, _TCHAR* argv[])
 			for (int j = 0; j < wcslen(argv[i]) - 8; j++) {
 				parm.out[k++] = parm.in[j];
 			}
-			parm.out[wcslen(parm.out) + 1] = '\0';
-			wcsncat_s(parm.out, L".out", 4);
+			parm.out[k] = '\0';
+			wcsncat_s(parm.out, PARM_OUT_DEFAULT_EXT, 4);
 		}
 	}
 
-	std::wcout << parm.out << std::endl;
+	for (int i = 1; i < argc; i++) {
+		k = 0;
+		if (wcsstr(argv[i], PARM_LOG)) {
+			for (int j = 5; j < wcslen(argv[i]); j++) {
+				parm.log[k++] = argv[i][j];
+			}
+		}
+		else {
+			for (int j = 0; j < wcslen(argv[i]) - 8; j++) {
+				parm.log[k++] = parm.in[j];
+			}
+			parm.log[k] = '\0';
+			wcsncat_s(parm.log, PARM_LOG_DEFAULT_EXT, 4);
+		}
+	}
 	return parm;
 }

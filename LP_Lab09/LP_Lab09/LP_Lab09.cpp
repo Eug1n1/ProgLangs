@@ -37,11 +37,11 @@ int main()
 
     int a = 1, b = 2, c = 3;
     std::cout << "CDEVL" << std::endl;
-    std::cout << Call::cdevl(a, b, c) << std::endl << std::endl;
+    int ab = Call::cdevl(a, b, c);
 
     std::cout << "CSTD" << std::endl;
-    std::cout << Call::cstd(a, b, c) << std::endl << std::endl;
+    int bb = Call::cstd(a, 2, 3);
 
     std::cout << "CFST" << std::endl;
-    std::cout << Call::cfst(1, 2, 3) << std::endl << std::endl;
+    int cb = Call::cfst(1, 2, 3);
 }
