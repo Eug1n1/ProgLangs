@@ -8,9 +8,9 @@
 
 using std::endl;
 
-#define testParm 0
-#define testError 0
-#define testIn 0
+#define testParm 1
+#define testError 1
+#define testIn 1
 #define testLog 1
 
 int _tmain(int argc, _TCHAR* argv[])

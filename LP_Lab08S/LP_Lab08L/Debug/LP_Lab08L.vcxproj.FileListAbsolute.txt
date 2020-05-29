@@ -1,0 +1,2 @@
+C:\Projs\ProgLangs\LP_Lab08S\Debug\LP_Lab08L.pdb
+C:\Projs\ProgLangs\LP_Lab08S\LP_Lab08L\Debug\LP_Lab08L.pdb

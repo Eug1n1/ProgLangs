@@ -11,15 +11,8 @@ Log::LOG Log::getlog(wchar_t logfile[])
 		throw ERROR_THROW(112);
 	}
 	wcscpy_s(tmp.logfile, logfile);
+	return tmp;
 
-	//std::ofstream stream(logfile);
-
-	//if (stream.is_open()) {
-	//	tmp.stream = &stream;
-	//	wcscpy_s(tmp.logfile, logfile);
-		return tmp;
-	//}
-	//throw ERROR_THROW(112);
 }
 
 void Log::WriteLine(LOG log, char* c, ...)
