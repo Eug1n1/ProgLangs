@@ -5,7 +5,7 @@ namespace Error
 	ERROR errors[ERROR_MAX_ENTRY] =
 	{
 		ERROR_ENTRY(0, "Íåäîïóñòèìûé êîä îøèáêè"),
-		ERROR_ENTRY(0, "Ñèñòåìíûé ñáîé"),
+		ERROR_ENTRY(1, "Ñèñòåìíûé ñáîé"),
 		ERROR_ENTRY_NODEF(2), ERROR_ENTRY_NODEF(3), ERROR_ENTRY_NODEF(4), ERROR_ENTRY_NODEF(5),
 		ERROR_ENTRY_NODEF(6), ERROR_ENTRY_NODEF(7), ERROR_ENTRY_NODEF(8), ERROR_ENTRY_NODEF(9),
 		ERROR_ENTRY_NODEF10(10), ERROR_ENTRY_NODEF10(20), ERROR_ENTRY_NODEF10(30), ERROR_ENTRY_NODEF10(40), ERROR_ENTRY_NODEF10(50),
@@ -16,8 +16,8 @@ namespace Error
 		ERROR_ENTRY_NODEF(105), ERROR_ENTRY_NODEF(106), ERROR_ENTRY_NODEF(107),
 		ERROR_ENTRY_NODEF(108), ERROR_ENTRY_NODEF(109),
 		ERROR_ENTRY(110, "Îøèáêà ïğè îòêğûòèè ôàéëà ñ èõîäíûì êîäîì (-in)"),
-		ERROR_ENTRY_NODEF(111, "Íåäîïóñòèìûé ñèìâîë â èñõîäíîì ôàéëå (-in)"),
-		ERROR_ENTRY_NODEF(112, "Îøèáêà ïğè ñîçäàíèè ôàéëà ïğîòîêîëà (-log)"),
+		ERROR_ENTRY(111, "Íåäîïóñòèìûé ñèìâîë â èñõîäíîì ôàéëå (-in)"),
+		ERROR_ENTRY(112, "Îøèáêà ïğè ñîçäàíèè ôàéëà ïğîòîêîëà (-log)"),
 		ERROR_ENTRY_NODEF(113), ERROR_ENTRY_NODEF(114), ERROR_ENTRY_NODEF(115),
 		ERROR_ENTRY_NODEF(116), ERROR_ENTRY_NODEF(117), ERROR_ENTRY_NODEF(118), ERROR_ENTRY_NODEF(119),
 		ERROR_ENTRY_NODEF10(120), ERROR_ENTRY_NODEF10(130), ERROR_ENTRY_NODEF10(140), ERROR_ENTRY_NODEF10(150),
@@ -27,11 +27,24 @@ namespace Error
 	};
 
 	ERROR getError(int id) {
-	
+		ERROR error;
+		if (id > 0 && id < ERROR_MAX_ENTRY) {
+			return error = errors[id];
+		}
+
+		return error = errors[0];
 	}
 
 	ERROR getErrorIn(int id, int line = -1, int col = -1) {
+		ERROR error;
+		if (id > 0 && id < ERROR_MAX_ENTRY) {
+			error = errors[id];
+			error.inext.col = col;
+			error.inext.line = line;
+			return error;
+		}
 
+		return error = errors[0];
 	}
 
 };
