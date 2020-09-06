@@ -8,21 +8,7 @@
 #include <cwchar>
 
 using std::endl;
-
-void separator(In::IN in) {
-    char* buf = new char[256];
-    int j = 0; //rbbbbbbbc;b;e;
-    for (int i = 0; i < in.size + 1; i++) {
-        if (in.text[i] == '|') {
-            buf[j] = '\0';
-            FST::FSTTest(buf);
-            j = 0;
-            i++;
-        }
-        if(in.text[i] != '\n')
-            buf[j++] = in.text[i];
-    }
-}
+using std::cout;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -31,16 +17,15 @@ int _tmain(int argc, _TCHAR* argv[])
     Log::LOG log = Log::INITLOG;
     try
     {
-        Parm::PARM parm = Parm::getParm(argc, argv);
+        Parm::PARM parm = Parm::getparm(argc, argv);
         log = Log::getlog(parm.log);
-        Log::WriteLine(log, (char*)"Тест:", (char*)"без ошибок", (char*)"");
+        Log::WriteLine(log, (char*)"Тест:", (char*)" пройден", (char*)"");
         Log::WriteLog(log);
         Log::WriteParm(log, parm);
-        In::IN in = In::getIn(parm.in);
+        In::IN in = In::getin(parm.in, parm.out);
         Log::WriteIn(log, in);
         Log::Close(log);
 
-        separator(in);
     }
     catch (Error::ERROR e)
     {

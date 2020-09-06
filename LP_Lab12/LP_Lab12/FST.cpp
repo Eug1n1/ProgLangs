@@ -43,15 +43,18 @@ bool FST::execute(FST& fst)
 	bool rc = true;
 	for (short i = 0; i < strlen(fst.string) && rc; i++)
 	{
-		rc = step(fst, rstates);
+		rc = symbolCheck(fst, rstates);
 		fst.position++;
+		if (!rc) {
+			throw "df";
+		}
 	};
 	delete[] rstates;
 	return rc;
 };
 
 
-bool FST::step(FST& fst, short*& rstates)
+bool FST::symbolCheck(FST& fst, short*& rstates)
 {
 	bool rc = false;
 	std::swap(rstates, fst.rstates);
@@ -73,19 +76,17 @@ bool FST::step(FST& fst, short*& rstates)
 void FST::FSTTest(char* string)
 {
 	using namespace FST;
-	//r(b)*((ñ;b+);)+b*e;
+	// i(b)+((c+o+n)b+)*b*r;	
 	FST fst(
 		string,
-		10,
-		NODE(2, RELATION('r', 1), RELATION('r', 2)),
-		NODE(3, RELATION('b', 2), RELATION('b', 1)),
-		NODE(1, RELATION('c', 3)),
-		NODE(1, RELATION(';', 4)),
+		8,
+		NODE(1, RELATION('i', 1)),
+		NODE(4, RELATION('b', 2), RELATION('b', 1), RELATION('b', 4), RELATION('b', 5)),
+		NODE(3, RELATION('c', 3), RELATION('o', 3), RELATION('n', 3)),
+		NODE(3, RELATION('b', 4), RELATION('b', 3), RELATION('b', 5)),
 		NODE(2, RELATION('b', 5), RELATION('b', 4)),
-		NODE(2, RELATION(';', 6), RELATION(';', 7)),
-		NODE(2, RELATION('b', 7), RELATION('b', 6)),
-		NODE(1, RELATION('e', 8)),
-		NODE(1, RELATION(';', 9)),
+		NODE(1, RELATION('r', 6)),
+		NODE(1, RELATION(';', 7)),
 		NODE()
 	);
 	if (execute(fst))

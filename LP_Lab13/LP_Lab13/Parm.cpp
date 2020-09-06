@@ -1,55 +1,70 @@
 #include "Parm.h"
-#include <wchar.h>
 #include "Error.h"
+#include <tchar.h>
 
-Parm::PARM Parm::getParm(int argc, _TCHAR* argv[])
-{
-	int k = 0;
-	PARM parm;
-	parm.out[0] = '\0';
-	parm.log[0] = '\0';
-	parm.in[0] = '\0';
-	for (int i = 1; i < argc; i++) {
-		if (wcsstr(argv[i], PARM_IN)) {
-			for (int j = 4; j < wcslen(argv[i]); j++) {
-				parm.in[k++] = argv[i][j];
-			}
-			parm.in[k] = '\0';
-		}
-		
+Parm::PARM Parm::getparm(int argc, _TCHAR* argv[]) {
+    PARM p;
+    wchar_t* inParm = nullptr, * outParm = nullptr, * logParm = nullptr;
 
-		k = 0;
-		if (wcsstr(argv[i], PARM_OUT)) {
-			for (int j = 5; j < wcslen(argv[i]); j++) {
-				parm.out[k++] = argv[i][j];
-			}
-			parm.out[k] = '\0';
-		}
+    for (int i = 1; i < argc; i++)
+    {
+        if (wcslen(argv[i]) > PARM_MAX_SIZE)
+        {
+            throw ERROR_THROW(104);
+        }
+    }
 
-		k = 0;
-		if (wcsstr(argv[i], PARM_LOG)) {
-			for (int j = 5; j < wcslen(argv[i]); j++) {
-				parm.log[k++] = argv[i][j];
-			}
-			parm.log[k] = '\0';
+	for (int i = 1; i < argc; i++)
+	{
+		inParm = wcsstr(argv[i], PARM_IN);
+		if (inParm != nullptr)
+		{
+			break;
 		}
-		
 	}
-
-	if (parm.in[0] == '\0') {
+	if (inParm == nullptr)
+	{
 		throw ERROR_THROW(100);
 	}
 
-	if (parm.out[0] == '\0') {
-		wcscpy_s(parm.out, parm.in);
-		wcsncat_s(parm.out, PARM_OUT_DEFAULT_EXT, 4);
-	}
+    for (int i = 1; i < argc; i++) 
+	{
+        inParm = wcsstr(argv[i], PARM_IN);
+        if (inParm) 
+		{
+            wcscpy_s(p.in, inParm + wcslen(PARM_IN));
+            break;
+        }
+    }
 
-	if (parm.log[0] == '\0') {
-		wcscpy_s(parm.log, parm.in);
-		wcsncat_s(parm.log, PARM_LOG_DEFAULT_EXT, 4);
-	}
+    for (int i = 1; i < argc; i++) 
+	{
+        outParm = wcsstr(argv[i], PARM_OUT);
+        if (outParm) 
+		{
+            wcscpy_s(p.out, outParm + wcslen(PARM_OUT));
+            break;
+        }
+    }
+    if (!outParm) {
+        wcscpy_s(p.out, inParm + wcslen(PARM_IN));
+        wcscat_s(p.out, PARM_OUT_DEFAULT_EXT);
+    }
 
+    for (int i = 1; i < argc; i++) 
+	{
+        logParm = wcsstr(argv[i], PARM_LOG);
+        if (logParm) 
+		{
+            wcscpy_s(p.log, logParm + wcslen(PARM_LOG));
+            break;
+        }
+    }
+    if (!logParm)
+	{
+        wcscpy_s(p.log, inParm + wcslen(PARM_IN));
+        wcscat_s(p.log, PARM_LOG_DEFAULT_EXT);
+    }
 
-	return parm;
+    return p;
 }

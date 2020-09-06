@@ -38,6 +38,6 @@ namespace FST
 		);
 	};
 	bool execute(FST& fst);
-	bool step(FST& fst, short*& rstates);
+	bool symbolCheck(FST& fst, short*& rstates);
 	void FSTTest(char* string);
 };

@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{3FC8889C-8631-4303-807C-73159A9B909F}</ProjectGuid>
+    <ProjectGuid>{E95AFDF5-CFD1-4312-948E-2B245EC1392A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>LPLab13</RootNamespace>
+    <RootNamespace>LPlab13</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,8 +151,11 @@
     <ClCompile Include="FST.cpp" />
     <ClCompile Include="In.cpp" />
     <ClCompile Include="Log.cpp" />
-    <ClCompile Include="LP_Lab13.cpp" />
+    <ClCompile Include="LP_lab13.cpp" />
     <ClCompile Include="Parm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Desktop\DRT\LP_Lab13\cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error.h" />
@@ -160,9 +163,7 @@
     <ClInclude Include="In.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Parm.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

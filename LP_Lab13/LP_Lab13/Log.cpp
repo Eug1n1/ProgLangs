@@ -7,28 +7,28 @@ Log::LOG Log::getlog(wchar_t logfile[])
 	Log::LOG tmp;
 	tmp.stream = new std::ofstream;
 	tmp.stream->open(logfile);
-	if (!tmp.stream->is_open()) {
+	if (!tmp.stream->is_open())
 		throw ERROR_THROW(112);
-	}
-	wcscpy_s(tmp.logfile, logfile);
+	wcscpy_s(tmp.logfile, logfile);// копируем название нашего файла
 	return tmp;
-
 }
 
 void Log::WriteLine(LOG log, char* c, ...)
 {
+	
 	std::string str;
 	va_list args;
 	va_start(args, c);
 	char* i = c;
-	str += i;
-	while ((i = va_arg(args, char*)) != "")
+	while (i != "")
 	{
 		str += i;
+		i = va_arg(args, char*);
 	}
 	va_end(args);
 	*log.stream << str << '\n';
 	log.stream->flush();
+	return;
 }
 
 void Log::WriteLine(LOG log, const wchar_t* c, ...)
@@ -43,22 +43,21 @@ void Log::WriteLine(LOG log, const wchar_t* c, ...)
 		*log.stream << temp;
 		++ptr;
 	}
-	log.stream->flush();
 }
 
 void Log::WriteLog(LOG log)
 {
-	*log.stream << "------ Протокол ------ Дата: ";
+	*log.stream << "------ Протокол ------\n------ Дата: ";
 	time_t now = time(0);
 	tm date;
 	localtime_s(&date, &now);
 	char buf[228];
 	strftime(buf, sizeof(buf), "%c", &date);
 	*log.stream << buf << "------\n";
-	log.stream->flush();
+	return;
 }
 
-void Log::WriteParm(LOG log, Parm::PARM parm)
+void Log::WriteParm(LOG log, Parm::PARM parm)//
 {
 	char str[255];
 
@@ -88,6 +87,7 @@ void Log::WriteIn(LOG log, In::IN in)
 	*log.stream << "\nПроигнорировано: " << in.ignor;
 	*log.stream << "\nВсего строк    : " << in.lines;
 	log.stream->flush();
+	return;
 }
 
 void Log::WriteError(LOG log, Error::ERROR error)
@@ -95,15 +95,21 @@ void Log::WriteError(LOG log, Error::ERROR error)
 	if (log.stream != NULL)
 	{
 		*log.stream << "Ошибка " << error.id << ": " << error.message << ", строка" << error.inext.line << " позиция " << error.inext.col;
+		log.stream->flush();
+		std::cout << "Ошибка " << error.id << ": " << error.message << ", строка" << error.inext.line << " позиция " << error.inext.col;
 	}
 	else
 	{
 		std::cout << "Ошибка " << error.id << ": " << error.message << ", строка" << error.inext.line << " позиция " << error.inext.col;
 	}
-
+	return;
 }
 
 void Log::Close(LOG log)
 {
 	log.stream->close();
+	delete log.stream;
+	return;
 }
+
+
