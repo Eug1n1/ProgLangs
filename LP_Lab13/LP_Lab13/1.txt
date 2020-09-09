@@ -1,3 +1,1 @@
-rbc;b;be;|rc;b;e;|rbc;b;e;
-rc;b;be;|rbbc;b;bbbe;|rbc;b;bbbbbe;
-rbbbbbbbc;b;e;|rbbbbbbb;b;e;|rcb;e;
+rbc;b;be;
