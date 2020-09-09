@@ -52,7 +52,11 @@ In::IN In::getin(wchar_t infile[], wchar_t outfile[])
 		{
 			in.size--;
 		}
-		else if(symbol == ' ' && str.find(in.text[in.size - 1]) != std::string::npos)
+		else if (symbol == ' ' && str.find(in.text[in.size - 1]) != std::string::npos)
+		{
+			spaceIgnore = true;
+		}
+		else if (symbol == ' ' && in.text[in.size - 1] == '\n') 
 		{
 			spaceIgnore = true;
 		}
