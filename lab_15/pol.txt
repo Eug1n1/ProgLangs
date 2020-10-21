@@ -1,0 +1,157 @@
+	bool PolishNotation( //ïîñòðîåíèå ïîëüêîé çàïèñè â òàáëèöå ëåêñåì
+		int lextable_pos,		///ïîçèöèÿ âûðàæåíèÿ â ÒË
+		LT::LexTable& lextab,	///ÒË
+		IT::IdTable& idtab		///ÒÈ
+	)
+
+	{
+		std::stack <char> steck;
+		int n = 0;
+		char f = ' ';
+		bool flagfunction = false;
+		char string[256] = "";	
+		char str[256] = "";
+		int length = 0;
+		int strlength = 0;
+
+		while (lextab.table[lextable_pos + n].lexema[0] != ';')///ïîêà íå ;
+		{
+			if (lextab.table[lextable_pos + n].lexema[0] == '(' || 
+				lextab.table[lextable_pos + n].lexema[0] == ')' || 
+				lextab.table[lextable_pos + n].lexema[0] == 'v' ||
+				lextab.table[lextable_pos + n].lexema[0] == 'l' || 
+				lextab.table[lextable_pos + n].lexema[0] == 'i' || 
+				lextab.table[lextable_pos + n].lexema[0] == ',')
+			{
+
+				if (lextab.table[lextable_pos + n].lexema[0] == '(')///åñëè (
+				{
+					steck.push('(');
+				}
+
+				if (lextab.table[lextable_pos + n].lexema[0] == 'v')///åñëè +,-,*,/
+				{
+					if (steck.empty())///ñòåê ïóñòîé
+					{
+						steck.push(idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0]);
+					}
+					else
+					{
+						if (steck.top() == '(')///ââåðõó ñòåêà (
+						{
+							steck.push(idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0]);
+						}
+						else
+						{
+							while (!steck.empty())
+							{
+								if (steck.top() != '(')				///åñëè ââåðõó ñòåêà íåò (
+								{
+									str[strlength] = steck.top();	///str - top
+									strlength++;
+									steck.pop();
+									
+									if (idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0] == '+' ||	///åñëè +,-
+										idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0] == '-')
+									{
+										string[length] = str[strlength - 1];	///â string - top
+										length++;
+										str[strlength - 1] = ' ';				///str î÷èù
+										strlength--;
+									}
+									
+									if (idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0] == '/' ||	///åñëè *,/
+										idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0] == '*')
+									{
+										if (str[strlength - 1] == '/' || str[strlength - 1] == '*')///åñëè top *,/
+										{
+											string[length] = str[strlength - 1];///â string - top
+											length++;
+											str[strlength - 1] = ' ';
+											strlength--;
+										}
+									}
+								}
+								else
+									break;
+							}
+
+							for (int i = 0; i < strlength; i++)
+							{
+								steck.push(str[strlength - 1 - i]);///ïóøèì â ñòåê ýëåìåíòû, êîòîðûå íå âûòîëêíóëèñü
+							}
+							strcpy(str, "");///î÷èùàåì ñòðîêó
+							strlength = 0;
+							steck.push(idtab.table[lextab.table[lextable_pos + n].idxTI].lexes[0]);
+						}
+					}
+				}
+				
+				if (lextab.table[lextable_pos + n].lexema[0] == 'i' ||	///åñëè i, l
+					lextab.table[lextable_pos + n].lexema[0] == 'l')
+				{
+					if (idtab.table[lextab.table[lextable_pos + n].idxTI].idtype == 2)///åñëè ôóíêöèÿ
+					{
+						steck.push('@');
+						flagfunction = true;
+					}
+					else
+					{
+						for (int i = 0; i < strlen(idtab.table[lextab.table[lextable_pos + n].idxTI].id); i++)
+						{
+							string[length] = idtab.table[lextab.table[lextable_pos + n].idxTI].id[i];///èäåíòèôèêàòîð èç íåñêîëüêèõ áóêâ - ëåêñåìà çàìåíÿåò ñèìâîëû
+							length++;
+						}
+					}
+				}
+
+				if (lextab.table[lextable_pos + n].lexema[0] == ')' && !flagfunction)	///åñëè ) è íå ôóíêöèÿ
+				{
+					do
+					{
+						f = steck.top();
+						steck.pop();	///î÷èùàåì âåðõ
+						if (f != '(')
+						{
+							string[length] = f;///÷òîáû ( íå çàíåñëàñü
+							length++;
+						}
+					} while (f != '(');
+				}
+
+				if (lextab.table[lextable_pos + n].lexema[0] == ')' && flagfunction)	///åñëè ) è ôóíêöèÿ
+				{
+					flagfunction = false;
+					do
+					{
+						f = steck.top();
+						steck.pop();
+						if (f != '(')
+						{
+							string[length] = f;
+							length++;
+						}
+					} while (f != '@');///ïîêà íå ðàâíî èäåíòèôèêàòîðó èëè ëåêñåìå.ôóíöèÿ âûâîäèò âñå,÷òî â ñêîáêàõ è ïîòîì çíàê ôóíêöèè
+				}
+			}
+			else
+				return false;
+			n++;
+		}
+		while (!steck.empty())
+		{
+			string[length] = steck.top();
+			steck.pop();
+			length++;
+		}
+
+		for (int i = 0; i < length; i++)///ïîêà ìåíüøå äëèíû ðåçóëüò ñòðîêè
+		{
+			lextab.table[lextable_pos + i].lexema[0] = string[i];
+		}
+		for (int i = 0; i < (n - length); i++)
+		{
+			lextab.table[i + lextable_pos + length].lexema[0] = '\0';///îñòàâøååñÿ ìåñòî çàïîëíÿåì ñèìâîëîì-çàïîëíèòåëåì
+		}
+		return true;
+	}

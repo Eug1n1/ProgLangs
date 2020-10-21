@@ -1,5 +1,5 @@
-#include "Error.h"
-#include <iostream>
+#include "Headers.h"
+
 namespace Error
 {
 	ERROR errors[ERROR_MAX_ENTRY] =
