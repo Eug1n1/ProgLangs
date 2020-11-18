@@ -56,8 +56,6 @@ bool toPolish(std::string source)
 				int symbolPrior = prior(source[i]);
 				while (!stack.empty() && stack.top() != '(' && symbolPrior <= prior(stack.top()))
 				{
-					/*if (stack.top() == '(')
-						break;*/
 					result += stack.top();
 					stack.pop();
 				}
@@ -292,12 +290,30 @@ bool polish(std::string source)
 int _tmain(int argc, _TCHAR* argv[])
 {
 	setlocale(LC_ALL, "ru");
-	std::ifstream fin("C:\\projs\\1.txt");
+	std::ifstream fin("C:\\Projs\\1.txt");
 	std::string source = "";
 	while (!fin.eof())
 	{
 		std::getline(fin, source);
 		if (toPolish(source))
+		{
+			std::cout << source << std::endl;
+			std::cout << "разобрано\n" << std::endl;
+		}
+		else
+		{
+			std::cout << source << std::endl;
+			std::cout << "не разобрано\n" << std::endl;
+		}
+	}
+	fin.close();
+
+	std::ifstream in("C:\\Projs\\1.txt");
+	source = "";
+	while (!in.eof())
+	{
+		std::getline(in, source);
+		if (polish(source))
 		{
 			std::cout << source << std::endl;
 			std::cout << "разобрано\n" << std::endl;
